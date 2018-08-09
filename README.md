@@ -1,13 +1,18 @@
 # My Dotfiles
-## Applications
+## Overview
+* **Theme**: [Nord](https://github.com/arcticicestudio/nord)
+* **Shell:** Zsh with [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 * **WM:** Spectrewm
-* **Terminal:** Termite
-* **Editor:** Visual Studio Code
+* **Terminal:** Termite with [Nord Termite](https://github.com/arcticicestudio/nord-termite).
+* **Editor:** Visual Studio Code with [Nord Visual Studio Code](https://github.com/arcticicestudio/nord-visual-studio-code) 
 * **Browser:** Firefox
-* **Launcher:** Rofi with a slightly modified theme by
+* **Launcher:** Rofi with a slightly modified theme by [devdevdevdevdeo](https://github.com/devdevdevdevdeo).
+* **Font:** [Iosevka](https://github.com/be5invis/Iosevka)
 ## Install
-'''
-git clone ~/.dotfiles
+```
+git clone https://github.com/PixelwarStudio/dotfiles.git ~/.dotfiles
 cd .dotfiles
 stow dir
-'''
+```
+
+## Screenshots
