@@ -11,8 +11,11 @@
 ## Install
 ```
 git clone https://github.com/PixelwarStudio/dotfiles.git ~/.dotfiles
-cd .dotfiles
-stow dir
+stow -d .dotfiles the_config_you_want
 ```
 
 ## Screenshots
+![rofi](https://raw.githubusercontent.com/PixelwarStudio/dotfiles/master/rofi.png)
+![spectrwm](https://raw.githubusercontent.com/PixelwarStudio/dotfiles/master/spectrwm.png)
+![media](https://raw.githubusercontent.com/PixelwarStudio/dotfiles/master/media.png)
+![vscode](https://raw.githubusercontent.com/PixelwarStudio/dotfiles/master/vscode.png)
