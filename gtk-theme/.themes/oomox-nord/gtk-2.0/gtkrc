@@ -1,24 +1,34 @@
-gtk-color-scheme = "base_color: #3b4252"
-gtk-color-scheme = "text_color: #d8dee9"
-gtk-color-scheme = "bg_color: #2e3440"
-gtk-color-scheme = "fg_color: #d8dee9"
-gtk-color-scheme = "tooltip_bg_color: #d8dee9"
-gtk-color-scheme = "tooltip_fg_color: #3b4252"
-gtk-color-scheme = "selected_bg_color: #434c5e"
-gtk-color-scheme = "selected_fg_color: #3b4252"
-gtk-color-scheme = "insensitive_bg_color: #585e6a"
-gtk-color-scheme = "insensitive_fg_color: #adb3be"
-gtk-color-scheme = "notebook_bg: #3b4252"
-gtk-color-scheme = "dark_sidebar_bg: #393f4f"
-gtk-color-scheme = "link_color: #434c5e"
-gtk-color-scheme = "menu_bg: #3b4252"
+# Based on Bridge by ScionicSpectre and Adwaita by GNOME
+# vim:set ts=2 sw=2 sts=2 ai et:
+#
+# This is the GTK+ 2 version of oomox-nord. It's whole purpose is to look as the
+# GTK+ 3 version as much as possible until GTK+ 2 dies completely.
+#
+# Note: comments for explaining styles are on the bottom of each file beside the
+# widget matches.
 
-gtk-icon-sizes = "gtk-button=16,16" # This makes button icons smaller.
-gtk-auto-mnemonics = 1
+# Declare the colours used throughout the theme.
+# There shouldn't be any fiddling with them in the theme files themselves in
+# order to not mess up the dark theme.
+
+# Text/base
+gtk-color-scheme = "text_color:#d8dee9\nbase_color:#3b4252"
+# Foreground/background
+gtk-color-scheme = "fg_color:#d8dee9\nbg_color:#2e3440"
+# Selected foreground/background
+gtk-color-scheme = "selected_fg_color:#d8dee9\nselected_bg_color:#434c5e"
+# Titlebar foreground/background
+gtk-color-scheme = "titlebar_fg_color:#d8dee9\ntitlebar_bg_color:#3b4252"
+# Tooltips foreground/background
+gtk-color-scheme = "tooltip_fg_color:#d8dee9\ntooltip_bg_color:#616161"
+# Links
+gtk-color-scheme = "link_color:#434c5e\nvisited_link_color:#E040FB"
+
+# Set GTK settings
+gtk-auto-mnemonics              = 1
 gtk-primary-button-warps-slider = 1
 
+# And hand over the control to the theme files
 include "main.rc"
 include "apps.rc"
-include "panel.rc"
-include "xfce-notify.rc"
-include "menubar-toolbar/menubar-toolbar-dark.rc"
+include "hacks.rc"
