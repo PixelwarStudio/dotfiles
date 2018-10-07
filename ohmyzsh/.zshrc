@@ -91,6 +91,9 @@ plugins=(
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+export XDG_CONFIG_HOME="$HOME/.config"
+export PATH="$PATH:~/.config/bspwm"
+
 ZSH_CUSTOM=$HOME/.config/ohmyzsh
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
