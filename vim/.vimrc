@@ -1,8 +1,23 @@
-let mapleader = ","
-execute pathogen#infect()
+" Vundle
+set nocompatible
+filetype off
 
-filetype on
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'itchyny/lightline.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'lervag/vimtex'
+
+call vundle#end()
+filetype plugin indent on
+
+let mapleader = ','
+
+" Basic
 syntax on
+set laststatus=2
 colorscheme nord
 set number
 set guifont=Iosevka:h10
@@ -22,12 +37,3 @@ let g:lightline = {
       \ 'colorscheme': 'nord', 
       \ }
 
-set laststatus=2
-au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
