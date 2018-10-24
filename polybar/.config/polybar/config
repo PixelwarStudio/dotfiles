@@ -28,12 +28,18 @@ border-size = 0
 padding-left = 0
 padding-right = 2
 
-modules-left = bspwm
-modules-center = date 
-modules-right = battery pulseaudio wlan powermenu 
+modules-left = launcher bspwm
+modules-center = 
+modules-right = pulseaudio wlan date 
 
-tray-position = 
+tray-position = right 
 tray-padding = 0
+
+[module/launcher]
+type = custom/script
+label-padding = 2
+exec = echo ""
+click-left = rofi -show drun
 
 [module/bspwm]
 type = internal/bspwm
@@ -63,11 +69,7 @@ format = <label>
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 
-label = %time%, %date%
-
-[module/xwindow]
-type = internal/xwindow
-label = %title%
+label =  %date% 肋 %time% 
 
 [module/wlan]
 type = internal/network
@@ -84,12 +86,7 @@ ramp-signal-3 = 襤
 ramp-signal-4 = 蠟
 ramp-signal-foreground = ${colors.foreground-alt}
 
-[module/spotify]
-type = custom/script
-interval = 1
-format-prefix = "Now playing: "
-format = <label>
-exec = python ~/.config/polybar/scripts/spotify_status.py -f "{song} by {artist}"
+click-left = termite
 
 [module/powermenu]
 type = custom/menu
@@ -106,49 +103,18 @@ label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
 menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
+menu-0-0-exec = reboot
 menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+menu-0-1-exec = poweroff
 
 [module/pulseaudio]
 type = internal/pulseaudio
 format-volume = <ramp-volume>
+label-muted = 
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 use-ui-max = true
 interval = 5
-
-[module/battery]
-type = internal/battery
-
-; This is useful in case the battery never reports 100% charge
-full-at = 99
-
-; Use the following command to list batteries and adapters:
-; $ ls -1 /sys/class/power_supply/
-battery = BAT0
-adapter = ADP1
-
-; If an inotify event haven't been reported in this many
-; seconds, manually poll for new values.
-;
-; Needed as a fallback for systems that don't report events
-; on sysfs/procfs.
-;
-; Disable polling by setting the interval to 0.
-;
-; Default: 5
-poll-interval = 5
 
 ; vim:ft=dosini
