@@ -29,10 +29,10 @@ padding-left = 0
 padding-right = 2
 
 modules-left = launcher bspwm
-modules-center = 
-modules-right = pulseaudio wlan date 
+modules-center = date 
+modules-right = pulseaudio wlan
 
-tray-position = right 
+tray-position = 
 tray-padding = 0
 
 [module/launcher]
@@ -62,14 +62,14 @@ label-empty-padding = 2
 [module/date]
 type = internal/date
 
-date = %d.%m.%Y%
+date = %b %d
 time = %H:%M
 
 format = <label>
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 
-label =  %date% 肋 %time% 
+label = %date%, %time%
 
 [module/wlan]
 type = internal/network
