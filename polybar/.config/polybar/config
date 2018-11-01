@@ -32,8 +32,8 @@ modules-left = launcher bspwm
 modules-center = date 
 modules-right = pulseaudio wlan
 
-tray-position = 
-tray-padding = 0
+tray-position = right 
+tray-padding = 2
 
 [module/launcher]
 type = custom/script
