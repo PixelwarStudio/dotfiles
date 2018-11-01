@@ -93,6 +93,7 @@ plugins=(
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="$PATH:~/.config/bspwm"
+export PATH="$PATH:/home/janko/texlive/2018/bin/x86_64-linux"
 
 ZSH_CUSTOM=$HOME/.config/ohmyzsh
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
