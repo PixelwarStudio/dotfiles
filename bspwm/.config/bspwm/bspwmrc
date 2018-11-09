@@ -6,8 +6,10 @@ $HOME/.config/polybar/launch.sh &
 cd $HOME/dotfiles/scripts && python generate-background.py &
 feh --bg-fill wallpaper.png
 compton &
+gnome-keyring-daemon --start
 
-bspc monitor -d I II III IV V
+bspc monitor HDMI-1 -d code code2 
+bspc monitor DVI-D-1 -d browser media dump
 
 bspc config border_width         1
 bspc config normal_border_color \#2e3440
@@ -21,4 +23,6 @@ bspc config gapless_monocle      true
 
 bspc config focus_follows_pointer true
 
-bspc rule -a '*:zathura' state=tiled
+bspc rule -a 'spotify-client' desktop=^4
+bspc rule -a 'telegram-desktop' desktop=^4
+bspc rule -a 'pavucontrol' desktop=^4
