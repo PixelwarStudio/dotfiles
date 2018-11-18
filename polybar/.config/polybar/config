@@ -29,9 +29,9 @@ border-size = 0
 padding-left = 0
 padding-right = 2
 
-modules-left = launcher bspwm
-modules-center = date 
-modules-right = 
+modules-left = bspwm
+modules-center = 
+modules-right = date
 
 tray-position = 
 tray-padding = 2
@@ -56,12 +56,12 @@ underline-size = 0
 
 border-size = 0
 
-padding-left = 0
+padding-left = 2
 padding-right = 2
 
-modules-left = bspwm
+modules-left = time
 modules-center = 
-modules-right = pulseaudio wlan
+modules-right = bspwm pulseaudio wlan
 
 tray-position = right 
 tray-padding = 2
@@ -100,7 +100,19 @@ format = <label>
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 
-label = %date%, %time%
+label = %date%
+
+[module/time]
+type = internal/date
+
+date = %b %d
+time = %H:%M
+
+format = <label>
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+
+label = %time%
 
 [module/wlan]
 type = internal/network
@@ -116,8 +128,6 @@ ramp-signal-2 = 嵐
 ramp-signal-3 = 襤
 ramp-signal-4 = 蠟
 ramp-signal-foreground = ${colors.foreground-alt}
-
-click-left = termite
 
 [module/powermenu]
 type = custom/menu
