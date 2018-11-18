@@ -3,13 +3,11 @@
 sxhkd &
 ./.fehbg &
 $HOME/.config/polybar/launch.sh &
-cd $HOME/dotfiles/scripts && python generate-background.py &
+cd $HOME/dotfiles/scripts && python3 generate-background.py &
 feh --bg-fill wallpaper.png
 compton &
-gnome-keyring-daemon --start
 
-bspc monitor HDMI-1 -d I II 
-bspc monitor DVI-D-1 -d III IV V
+bspc monitor eDP-1 -d I II III IV V
 
 bspc config border_width         1
 bspc config normal_border_color \#2e3440

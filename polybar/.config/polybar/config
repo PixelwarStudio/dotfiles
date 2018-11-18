@@ -6,10 +6,9 @@ foreground-alt = #e5e9f0
 primary = #88c0d0
 alert = #bf616a
 
-[bar/monitor1]
-monitor = HDMI-1
+[bar/laptop]
 width = 100%
-height = 32
+height = 28
 radius = 0.0
 
 module-margin = 1
@@ -30,47 +29,11 @@ padding-left = 0
 padding-right = 2
 
 modules-left = bspwm
-modules-center = 
-modules-right = date
+modules-center = time
+modules-right = pulseaudio wlan battery
 
-tray-position = 
+tray-position = right
 tray-padding = 2
-
-[bar/monitor2]
-monitor = DVI-D-1
-width = 100%
-height = 32
-radius = 0.0
-
-module-margin = 1
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-font-0 = "Iosevka:pixelsize=10;0"
-font-1 = "Material Design Icons:size=10:2"
-
-line-size = 0
-overline-size = 0
-underline-size = 0
-
-border-size = 0
-
-padding-left = 2
-padding-right = 2
-
-modules-left = time
-modules-center = 
-modules-right = bspwm pulseaudio wlan
-
-tray-position = right 
-tray-padding = 2
-
-[module/launcher]
-type = custom/script
-label-padding = 2
-exec = echo ""
-click-left = rofi -show drun
 
 [module/bspwm]
 type = internal/bspwm
@@ -90,17 +53,21 @@ label-empty = 吏
 label-empty-foreground = ${colors.foreground}
 label-empty-padding = 2
 
-[module/date]
-type = internal/date
+[module/battery]
+type = internal/battery
+full-at = 99
+battery = BAT0
+adapter = AC
 
-date = %b %d
-time = %H:%M
+format-full = 
+format-charging = <ramp-capacity>
+format-discharging = <ramp-capacity>
 
-format = <label>
-format-background = ${colors.background}
-format-foreground = ${colors.foreground}
-
-label = %date%
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 
 [module/time]
 type = internal/date
@@ -112,11 +79,11 @@ format = <label>
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 
-label = %time%
+label = %date%, %time%
 
 [module/wlan]
 type = internal/network
-interface = wlp2s0
+interface = wlo1
 format-connected = <ramp-signal>
 label-connected = %essid%
 
@@ -128,25 +95,6 @@ ramp-signal-2 = 嵐
 ramp-signal-3 = 襤
 ramp-signal-4 = 蠟
 ramp-signal-foreground = ${colors.foreground-alt}
-
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
-label-open = 串
-label-open-foreground = ${colors.foreground}
-label-close = cancel
-label-close-foreground = ${colors.foreground}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = reboot
-menu-0-1 = power off
-menu-0-1-exec = poweroff
 
 [module/pulseaudio]
 type = internal/pulseaudio
