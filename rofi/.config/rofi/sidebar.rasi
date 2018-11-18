@@ -1,6 +1,5 @@
 configuration {
     sidebar-mode: true;
-    yoffset: -184;
 }
 
 * {
@@ -37,7 +36,7 @@ configuration {
 window {
 	location:	 west;
 	anchor:		 west;
-	height:		 60%;
+	height:		 100%;
 	width:		 20%;
 	orientation: horizontal;
 	children:	 [mainbox];
