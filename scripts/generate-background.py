@@ -3,7 +3,7 @@ from Tree.core import Tree
 from PIL import Image
 from random import randint, uniform
 
-WALLPAPER_SIZE = (1920, 1080)
+WALLPAPER_SIZE = (1920*2, 1080)
 
 
 def main():
