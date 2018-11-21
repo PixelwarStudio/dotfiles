@@ -52,7 +52,7 @@ def main():
         branches.append((scale, rad(angle)))
     
     tree = Tree(
-        pos=(0, 0, 0, -min(WALLPAPER_SIZE)*.45),
+        pos=(0, 0, 0, -min(WALLPAPER_SIZE)*.40),
         branches=branches
     )
     tree.grow(8)
@@ -63,7 +63,7 @@ def main():
     tree.draw_on(im, (216, 222, 233, 236, 239, 244), (136, 192, 208), 10)
 
     wallpaper = Image.new("RGB", WALLPAPER_SIZE, (59, 66, 82))
-    wallpaper.paste(im, ((wallpaper.size[0]-im.size[0])//2, (wallpaper.size[1]-im.size[1])//2))
+    wallpaper.paste(im, ((wallpaper.size[0]-im.size[0])//4, (wallpaper.size[1]-im.size[1])//2))
     wallpaper.save("wallpaper.png", "PNG")
 
 
