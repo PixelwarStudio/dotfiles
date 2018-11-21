@@ -1,27 +1,62 @@
-from math import radians as rad
+from math import radians as rad, sqrt
+from itertools import product
 from Tree.core import Tree
 from PIL import Image
-from random import randint, uniform
+from random import randint, uniform, random
 
 WALLPAPER_SIZE = (1920*2, 1080)
 
+def triangular_distribution(a, b, c, x):
+    if x <= a:
+        return 0
+    elif a <= x < c:
+        return (x-a)**2/((b-a)*(c-a))
+    elif c <= x < b:
+        return 1 - (b-x)**2/((b-a)*(b-c))
+    else:
+        return 0
+
+def triangular_distribution_inverse(a, b, c, y):
+    if 0 <= y <= (c-a)/(b-a):
+        return a + sqrt(y*(b-a)*(c-a))
+    elif (c-a)/(b-a) <= y <= 1:
+        return b - sqrt((b-a)*(b-c))*sqrt(1-y)
+    return c
+
+def mountain_distribution_inverse(ab, x):
+    ab = sorted(ab)
+    a_min, b_max = min(ab), max(ab)
+
+    probs = []
+    for a, b in zip(ab[:-1], ab[1:]):
+        mid = (b+a) / 2
+        probs.append(abs(b - mid)*triangular_distribution(a_min, b_max, mid, x))
+
+    # Choose mountain/triangle
+    prob = randint(0, int(sum(probs)))
+    passed = 0
+    for i, (a, b) in enumerate(zip(ab[:-1], ab[1:])):
+        passed += probs[i]
+        if prob <= passed:
+            return triangular_distribution_inverse(a, b, (a+b)/2, x)
 
 def main():
     branches = []
+    used_angles = [-18, 18]
     number_of_branches = randint(4, 5)
-    angle_step = 270//number_of_branches
 
     for i in range(number_of_branches):
-        angle = -135 + angle_step*(i+.5) + randint(-angle_step//2, angle_step//2)
-        scale = uniform(.45, .55)
+        #angle = triangular_distribution_inverse(-18, 18, 0, random()) * 5
+        angle = mountain_distribution_inverse(used_angles, random()) * 5
+        used_angles.append(angle//5)
+        scale = .45 + randint(0, 10)/100
         branches.append((scale, rad(angle)))
-
+    
     tree = Tree(
         pos=(0, 0, 0, -min(WALLPAPER_SIZE)*.45),
-        branches=branches,
-        sigma=(.05, .05)
+        branches=branches
     )
-    tree.grow(8)
+    tree.grow(7)
 
     tree.move_in_rectangle()
 
