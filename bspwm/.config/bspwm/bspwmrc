@@ -7,7 +7,7 @@ cd $HOME/dotfiles/scripts && python3 generate-background.py &
 feh --bg-fill wallpaper.png
 compton &
 
-bspc monitor eDP-1 -d I II III IV V
+bspc monitor eDP1 -d I II III IV V
 
 bspc config border_width         1
 bspc config normal_border_color \#2e3440
