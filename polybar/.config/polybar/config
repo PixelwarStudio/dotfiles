@@ -60,8 +60,11 @@ battery = BAT0
 adapter = AC
 
 format-full = 
-format-charging = <ramp-capacity>
-format-discharging = <ramp-capacity>
+format-charging = <ramp-capacity> 
+label-charging = %time%
+
+format-discharging = <ramp-capacity> 
+label-discharging = %time%
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -84,7 +87,7 @@ label = %date%, %time%
 [module/wlan]
 type = internal/network
 interface = wlo1
-format-connected = <ramp-signal>
+format-connected = <ramp-signal> 
 label-connected = %essid%
 
 format-disconnected = 來
@@ -105,5 +108,14 @@ ramp-volume-1 = 
 ramp-volume-2 = 
 use-ui-max = true
 interval = 5
+
+[module/backlight]
+type = internal/xbacklight
+enable-scroll = false
+ramp-0 =
+ramp-1 =
+ramp-2 =
+ramp-3 =
+ramp-4 =
 
 ; vim:ft=dosini
