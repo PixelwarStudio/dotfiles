@@ -3,8 +3,8 @@
 sxhkd &
 ./.fehbg &
 $HOME/.config/polybar/launch.sh &
-cd $HOME/dotfiles/scripts && python3 generate-background.py &
-feh --bg-fill wallpaper.png
+cd $HOME/dotfiles/scripts && ./generate-wallpaper &
+feh --bg-fill --no-xinerama wallpaper.png
 compton &
 
 bspc monitor eDP1 -d I II III IV V
