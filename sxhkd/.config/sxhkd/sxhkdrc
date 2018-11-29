@@ -2,6 +2,12 @@
 # wm independent hotkeys
 #
 
+super + Up
+	xbacklight -inc 1
+
+super + Down
+	xbacklight -dec 1
+
 super + Print
     scrot
 
