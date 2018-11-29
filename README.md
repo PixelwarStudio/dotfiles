@@ -20,7 +20,7 @@ stow -d .dotfiles the_config_you_want
 ```
 
 ## Screenshots
-![clean](https://raw.githubusercontent.com/PixelwarStudio/dotfiles/master/clean.png)
-![shell](https://raw.githubusercontent.com/PixelwarStudio/dotfiles/master/shell.png)
-![rofi](https://raw.githubusercontent.com/PixelwarStudio/dotfiles/master/rofi.png)
-![vscode](https://raw.githubusercontent.com/PixelwarStudio/dotfiles/master/vscode.png)
+![clean](https://raw.githubusercontent.com/PixelwarStudio/dotfiles/hp-probook/clean.png)
+![shell](https://raw.githubusercontent.com/PixelwarStudio/dotfiles/hp-probook/shell.png)
+![rofi](https://raw.githubusercontent.com/PixelwarStudio/dotfiles/hp-probook/rofi.png)
+![vscode](https://raw.githubusercontent.com/PixelwarStudio/dotfiles/hp-probook/vscode.png)
