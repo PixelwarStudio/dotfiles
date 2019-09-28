@@ -9,7 +9,7 @@ alert = #bf616a
 [bar/monitor1]
 monitor = HDMI-1
 width = 100%
-height = 32
+height = 28
 radius = 0.0
 
 module-margin = 1
@@ -39,7 +39,7 @@ tray-padding = 2
 [bar/monitor2]
 monitor = DVI-D-1
 width = 100%
-height = 32
+height = 28
 radius = 0.0
 
 module-margin = 1
