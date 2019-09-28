@@ -1,22 +1,13 @@
 #!/usr/bin/python3
 from math import radians as rad, sqrt
+from itertools import accumulate
 from Tree.core import Tree
 from PIL import Image
 from random import randint, uniform, random
 
 WALLPAPER_SIZE = (1920*2, 1080)
 
-def triangular_distribution(a, b, c, x):
-    if x <= a:
-        return 0
-    elif a <= x < c:
-        return (x-a)**2/((b-a)*(c-a))
-    elif c <= x < b:
-        return 1 - (b-x)**2/((b-a)*(b-c))
-    else:
-        return 0
-
-def triangular_distribution_inverse(a, b, c, y):
+def triangular_cdf_inv(a, b, c, y):
     if 0 <= y <= (c-a)/(b-a):
         return a + sqrt(y*(b-a)*(c-a))
     elif (c-a)/(b-a) <= y <= 1:
@@ -24,30 +15,25 @@ def triangular_distribution_inverse(a, b, c, y):
     return c
 
 def mountain_distribution_inverse(ab, x):
-    ab = sorted(ab)
-    a_min, b_max = min(ab), max(ab)
+    ab.sort()
 
-    probs = []
-    for a, b in zip(ab[:-1], ab[1:]):
-        mid = (b+a) / 2
-        probs.append(abs(b - mid)*triangular_distribution(a_min, b_max, mid, x))
-
+    triangle_probs = [(b-a)**2 for (a, b) in zip(ab[:-1], ab[1:])]
     # Choose mountain/triangle
-    prob = randint(0, int(sum(probs)))
+    prob = x * sum(triangle_probs)
     passed = 0
-    for i, (a, b) in enumerate(zip(ab[:-1], ab[1:])):
-        passed += probs[i]
+    for (a, b) in zip(ab[:-1], ab[1:]):
+        passed += (b-a)**2
         if prob <= passed:
-            return triangular_distribution_inverse(a, b, (a+b)/2, x)
+            return triangular_cdf_inv(a, b, (a+b)/2, (prob-passed+(b-a)**2)/(b-a)**2)
 
-def main():
+if __name__ == "__main__":
     branches = []
-    used_angles = [-18, 18]
-    number_of_branches = 5
+    used_angles = [-130, 130]
+    number_of_branches = 6
 
     for _ in range(number_of_branches):
-        angle = mountain_distribution_inverse(used_angles, random()) * 5
-        used_angles.append(angle//5)
+        angle = mountain_distribution_inverse(used_angles, random())
+        used_angles.append(angle)
         scale = .45 + randint(0, 10)/100
         branches.append((scale, rad(angle)))
     
@@ -55,7 +41,7 @@ def main():
         pos=(0, 0, 0, -min(WALLPAPER_SIZE)*.40),
         branches=branches
     )
-    tree.grow(8)
+    tree.grow(6)
 
     tree.move_in_rectangle()
 
@@ -65,7 +51,3 @@ def main():
     wallpaper = Image.new("RGB", WALLPAPER_SIZE, (59, 66, 82))
     wallpaper.paste(im, ((wallpaper.size[0]-im.size[0])//4, (wallpaper.size[1]-im.size[1])//2))
     wallpaper.save("wallpaper.png", "PNG")
-
-
-if __name__ == "__main__":
-    main()
